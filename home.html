@@ -38,6 +38,8 @@
 
 /* Fixed header that fits the screen properly */
 header {
+ background-color: transparent; /* No solid background blocking the blend */
+  backdrop-filter: none; 
   position: fixed;
   top: 0;
   left: 0;
@@ -54,19 +56,21 @@ header {
   overflow: hidden;            /* keeps content inside header */
 }
 
-/* Logo stays centered and smaller */
 header .logo {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  max-width: 180px;            /* smaller so it never overflows */
+  max-width: 180px;
   height: auto;
-  filter: invert(1) contrast(200%) brightness(200%);
-  mix-blend-mode: difference;  /* inverts background behind it */
   z-index: 101;
   pointer-events: none;
+
+  /* This is the magic */
+  mix-blend-mode: difference;  /* Inverts all layers behind it */
+  filter: invert(1) contrast(200%) brightness(200%);
 }
+
 
 /* Nav links */
 nav {
@@ -209,10 +213,6 @@ footer a:hover {
   <!-- Header -->
 <header>
   <img src="Mama-Bill.png" alt="Mama I'm a Billionaire" class="logo">
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-  </nav>
 </header>
 
 
