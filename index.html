@@ -33,7 +33,7 @@
         /* Centered Typewriter Text */
         #text {
             position: absolute;
-            top: 50%;
+            top: 75%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: white; /* Text color */
@@ -65,7 +65,7 @@
 </head>
 <body>
     <!-- First GIF -->
-    <img id="bg" src="first.gif" alt="Background">
+    <img id="bg" src="spin.gif" alt="Background">
 
     <!-- Typewriter Text -->
     <div id="text">Click To Enter</div>
@@ -76,16 +76,9 @@
 
         // On click or tap
         document.body.addEventListener("click", () => {
-            text.style.display = "none"; // Hide text
-            bg.src = "second.gif";       // Switch to second gif
-            bg.currentTime = 0;          // Restart second gif (if video was used)
-
-            // Wait for gif duration, then redirect
-            const secondGifDuration = 2000; // in ms, adjust to your gif length
-            setTimeout(() => {
-                window.location.href = "home.html"; // Redirect to another page
-            }, secondGifDuration);
+                            window.location.href = "home.html"; // Redirect to another page
         });
     </script>
+
 </body>
 </html>

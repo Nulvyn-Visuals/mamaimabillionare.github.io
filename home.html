@@ -1,41 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mama I'm a Billionaire</title>
   <style>
-    body {
+    /* Page reset */
+    html, body {
       margin: 0;
+      padding: 0;
+      overflow-x: hidden;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f7f7f7;
+      background: transparent;   /* let background gif show through */
+      color: #fff;
+    }
+
+    /* Full-page animated background (keep file name the same) */
+    #bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2; /* behind everything */
+    }
+
+.spin {
+  display: block;
+  margin: 40px auto; /* centers it horizontally */
+  width: 400px;      /* make it smaller */
+  height: auto;      /* keeps correct aspect ratio */
+  object-fit: contain;
+  z-index: 1;
+  position: relative;
+}
+
+
+/* Fixed header that fits the screen properly */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;  /* keeps nav on the right */
+  align-items: center;
+  padding: 0 32px;            /* smaller horizontal padding */
+  height: 90px;               /* fixed height */
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  box-sizing: border-box;      /* prevents padding from overflowing */
+  overflow: hidden;            /* keeps content inside header */
+}
+
+/* Logo stays centered and smaller */
+header .logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 180px;            /* smaller so it never overflows */
+  height: auto;
+  filter: invert(1) contrast(200%) brightness(200%);
+  mix-blend-mode: difference;  /* inverts background behind it */
+  z-index: 101;
+  pointer-events: none;
+}
+
+/* Nav links */
+nav {
+  display: flex;
+  gap: 24px; /* equal spacing between links */
+}
+
+nav a {
+  color: rgba(255,255,255,0.95);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  white-space: nowrap;  /* keeps links on one line */
+}
+
+/* Add top padding so page content isn't hidden behind header */
+body {
+  padding-top: 90px; /* equal to header height */
+}
+
+
+/* Footer styling */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 40px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+
+    /* Nav (keeps clickable links on the right) */
+    nav {
+      z-index: 12; /* above centered logo */
+    }
+    nav a {
+      color: rgba(255,255,255,0.95);
+      text-decoration: none;
+      margin-left: 28px;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    /* SERVICES section container */
+    #services {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 36px 20px 80px;
+    }
+
+    /* Heading */
+    .hero-text {
+      display: block;
+      width: 100%;
+      color: #fff;
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin: 28px 0 36px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+    .move {
+     width: 50%;
+    }
+
+    /* Product grid */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      justify-items: center;
+      margin: 0 auto;
+    }
+
+    .service {
+      background-color: rgba(255,255,255,0.06); /* subtle card against dark gif */
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+      max-width: 320px;
+      width: 100%;
+      text-align: center;
+      color: #111; /* text inside card can be dark for readability */
+    }
+
+    .service img {
+      width: 80%;
+      max-width: 220px;
+      display: block;
+      margin: 12px auto;
+      border-radius: 8px;
+    }
+
+    .service h3 {
+      margin: 14px 0 6px;
       color: #111;
     }
-    header {
-      background-color: rgba(105, 105, 96, 0.5);
+
+    .service p {
+      margin: 0 0 8px;
       color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 40px;
+      font-size: 0.95rem;
     }
-    header a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
+
+    /* Responsive: smaller screens */
+    @media (max-width: 880px) {
+      header { padding: 18px 24px; min-height: 110px; }
+      .inverted-background { width: 220px; }
+      nav a { font-size: 16px; margin-left: 18px; }
+      .hero-text { font-size: 2rem; }
+      .services { gap: 18px; }
     }
-      </style>
+
+    @media (max-width: 520px) {
+      header { padding: 12px 16px; min-height: 92px; }
+      .inverted-background { width: 160px; top: 46%; } /* slightly up for better spacing */
+      nav a { font-size: 14px; margin-left: 12px; }
+      .hero-text { font-size: 1.6rem; margin-top: 18px; }
+      .service { max-width: 92%; padding: 14px; }
+      .service img { width: 72%; }
+    }
+  </style>
 </head>
 <body>
+  <!-- Background GIF -->
+  <img id="bg" src="background.gif" alt="Background">
 
-  <header>
-    <h2>Mama I'm a Billionaire</h2>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-    </nav>
-  </header>
+  <!-- Header -->
+<header>
+  <img src="Mama-Bill.png" alt="Mama I'm a Billionaire" class="logo">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
 
 
-    </body>
+<!-- Services Section -->
+  <section id="services">
+    <h2 class="hero-text">Our Products</h2>
+
+    <div class="services">
+      <div class="service">
+        <img src="tan-hoodie-front.png" alt="Tan hoodie">
+        <h3>Text</h3>
+        <p>Estimate 75$-80$ per asset</p>
+      </div>
+
+      <div class="service">
+        <img src="black-hoodie-front.png" alt="Black hoodie">
+        <h3>Text</h3>
+        <p>Estimate 75$-80$ per asset</p>
+      </div>
+
+      <div class="service">
+        <img src="tan-hoodie2-front.png" alt="Tan hoodie 2">
+        <h3>Text</h3>
+        <p>Estimate 75$-80$ per asset</p>
+      </div>
+    </div>
+  </section>
+
+<section id="move">
+  <img src="move.gif" alt="Mama I'm a Billionaire" class="spin">
+</section>
+
+  <footer>
+    <p>MMB © | Nulvyn Visuals © | Servers With GitHub Pages | Website By: Kuba Kieca | Buisness By: Lukas Mieliauskas</p>
+    <div>
+      <a href="https://www.instagram.com/nulvyn_visuals/" target="_blank">Instagram</a> |
+      <a href="https://www.tiktok.com/@the_butter_guy" target="_blank">TikTok</a> |
+      <a href="mailto:kubakicontact@gmail.com">kubakicontact@gmail.com</a>
+    </div>
+  </footer>
+</body>
 </html>
