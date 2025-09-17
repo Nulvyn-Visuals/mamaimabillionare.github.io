@@ -19,7 +19,7 @@
             cursor: pointer;
         }
 
-        /* Background GIF */
+        /* Background GIF - stays big by default */
         #bg {
             position: fixed;
             top: 0;
@@ -36,12 +36,12 @@
             top: 75%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white; /* Text color */
-      text-shadow: 
-        -1px -1px 0 black, /* Top-left shadow */
-        1px -1px 0 black,  /* Top-right shadow */
-        -1px 1px 0 black,  /* Bottom-left shadow */
-        1px 1px 0 black;   /* Bottom-right shadow */
+            color: white;
+            text-shadow: 
+                -1px -1px 0 black,
+                1px -1px 0 black,
+                -1px 1px 0 black,
+                1px 1px 0 black;
             font-size: 2em;
             font-family: 'Courier New', Courier, monospace;
             white-space: nowrap;
@@ -61,6 +61,22 @@
             from { border-color: white }
             to { border-color: transparent }
         }
+
+        /* On phones, shrink the entire GIF and center it */
+        @media (max-width: 600px) {
+            #bg {
+                width: 80%;
+                height: auto;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            #text {
+                font-size: 1.5em;
+                width: 12ch;
+            }
+        }
     </style>
 </head>
 <body>
@@ -76,9 +92,8 @@
 
         // On click or tap
         document.body.addEventListener("click", () => {
-                            window.location.href = "home.html"; // Redirect to another page
+            window.location.href = "home.html"; // Redirect to another page
         });
     </script>
-
 </body>
 </html>
