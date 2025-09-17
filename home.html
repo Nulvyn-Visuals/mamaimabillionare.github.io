@@ -218,79 +218,11 @@ footer a:hover {
     }
 
 
-/* The ticker bar */
-.scrolling-text {
-  width: 100%;
-  overflow: hidden;
-  background: rgba(87, 87, 87,0.4);
-  color: black; /* Matrix green */
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 40px;
-  height: 40px;
-  position: relative;
-  z-index: 99;
-  white-space: nowrap;
-  border: 2px solid gray;       /* solid border */
-  border-radius: 0px;            /* optional: rounded corners */
-  box-sizing: border-box;  
-}
-
-/* Moving track */
-.scroll-track {
-  display: flex;
-  width: max-content;
-  animation: scroll-loop 25s linear infinite;
-}
-
-/* No spaces between repeats */
-.scroll-content {
-  display: inline-block;
-  padding: 0; /* no extra padding */
-}
-
-/* Conveyor belt effect */
-@keyframes scroll-loop {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-
-
-
   </style>
 </head>
 <body>
   <!-- Background GIF -->
   <img id="bg" src="background.gif" alt="Background">
-
-<div class="scrolling-text">
-  <div class="scroll-track">
-    <div class="scroll-content">
-      &lt;01000111 01001111 01001111 01000100 00100000 00101111 00100000 01000010 01001111 01011001&gt;
-    </div>
-    <div class="scroll-content">
-      &lt;01000111 01001111 01001111 01000100 00100000 00101111 00100000 01000010 01001111 01011001&gt;
-    </div>
-    <div class="scroll-content">
-      &lt;01000111 01001111 01001111 01000100 00100000 00101111 00100000 01000010 01001111 01011001&gt;
-    </div>
-    <div class="scroll-content">
-      &lt;01000111 01001111 01001111 01000100 00100000 00101111 00100000 01000010 01001111 01011001&gt;
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
 
   <!-- Header -->
 <header>
