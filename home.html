@@ -79,7 +79,19 @@ header .cart {
   max-width: 40px;
   height: auto;
   z-index: 101;
-  pointer-events: none;
+  cursor: pointer; /* shows a pointer on hover */
+}
+
+ hoodie-one {
+  cursor: pointer; /* shows a pointer on hover */
+}
+
+ hoodie-two {
+  cursor: pointer; /* shows a pointer on hover */
+}
+
+ hoodie-three {
+  cursor: pointer; /* shows a pointer on hover */
 }
 
 
@@ -164,7 +176,7 @@ footer a:hover {
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
+      gap: 60px;
       justify-items: center;
       margin: 0 auto;
     }
@@ -175,13 +187,14 @@ footer a:hover {
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.45);
       max-width: 320px;
-      width: 100%;
+      width: 120%;
+      max-hight: 320px;
       text-align: center;
       color: #111; /* text inside card can be dark for readability */
     }
 
     .service img {
-      width: 80%;
+      width: 160%;
       max-width: 220px;
       display: block;
       margin: 12px auto;
@@ -227,10 +240,14 @@ footer a:hover {
   <!-- Header -->
 <header>
   <img src="Mama-Bill.png" alt="Mama I'm a Billionaire" class="logo">
+
   <nav>
-    <img href="cart.html" src="cart.png" class="cart">
+    <a href="cart.html">
+      <img src="cart.png" alt="Cart" class="cart">
+    </a>
   </nav>
 </header>
+
 
 
 <!-- Services Section -->
@@ -239,17 +256,23 @@ footer a:hover {
 
     <div class="services">
       <div class="service">
-        <img src="tan-hoodie-front.png" alt="Tan hoodie">
+    <a href="hoodie1.html">
+      <img src="tan-hoodie-front.png" alt="Tan hoodie" class="hoodie-one">
+    </a>
         <p>Estimate 75$-80$ per asset</p>
       </div>
 
       <div class="service">
-        <img src="black-hoodie-front.png" alt="Black hoodie">
+    <a href="hoodie2.html">
+      <img src="black-hoodie-front.png" alt="Black hoodie" class="hoodie-two">
+    </a>
         <p>Estimate 75$-80$ per asset</p>
       </div>
 
       <div class="service">
-        <img src="tan-hoodie2-front.png" alt="Tan hoodie 2">
+    <a href="hoodie3.html">
+      <img src="tan-hoodie2-front.png" alt="Tan hoodie 2" class="hoodie-three">
+    </a>
         <p>Estimate 75$-80$ per asset</p>
       </div>
     </div>
